@@ -12,6 +12,9 @@ public class HelloServiceImp implements HelloService{
 
     @Override
     public String sayHello(String name) {
-        return "Hello" + name;
+        if (name == null || name.isEmpty()){
+            return "Sanya ebobanuy kAzel!!!";
+        }
+        return "Hello " + name;
     }
 }
