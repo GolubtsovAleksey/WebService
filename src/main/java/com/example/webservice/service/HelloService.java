@@ -1,4 +1,4 @@
-package com.example.WebService;
+package com.example.webservice.service;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

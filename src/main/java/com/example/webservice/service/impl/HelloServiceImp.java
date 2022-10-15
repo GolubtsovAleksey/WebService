@@ -1,4 +1,6 @@
-package com.example.WebService;
+package com.example.webservice.service.impl;
+
+import com.example.webservice.service.HelloService;
 
 import javax.jws.WebService;
 
@@ -6,9 +8,9 @@ import javax.jws.WebService;
         serviceName = "Hello",
         portName = "HelloPort",
         targetNamespace = "http://service.ws.sample/",
-        endpointInterface = "com.example.WebService.HelloService"
+        endpointInterface = "com.example.webservice.service.HelloService"
 )
-public class HelloServiceImp implements HelloService{
+public class HelloServiceImp implements HelloService {
 
     @Override
     public String sayHello(String name) {

@@ -1,5 +1,6 @@
-package com.example.WebService;
+package com.example.webservice.config;
 
+import com.example.webservice.service.impl.HelloServiceImp;
 import org.apache.cxf.Bus;
 
 import org.apache.cxf.jaxws.EndpointImpl;
