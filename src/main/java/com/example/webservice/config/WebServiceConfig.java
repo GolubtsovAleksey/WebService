@@ -1,6 +1,8 @@
 package com.example.webservice.config;
 
-import com.example.webservice.service.impl.HelloServiceImp;
+import com.example.webservice.service.FileWriterService;
+import com.example.webservice.service.HelloService;
+import com.example.webservice.service.impl.HelloServiceImpl;
 import org.apache.cxf.Bus;
 
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -17,11 +19,17 @@ public class WebServiceConfig {
     private Bus bus;
 
     @Bean
-    public Endpoint helloEndpoint(){
-        EndpointImpl endpoint = new EndpointImpl(bus,new HelloServiceImp());
+    public HelloService helloService(FileWriterService fileWriterService){
+        HelloServiceImpl helloService = new HelloServiceImpl();
+        helloService.setFileWriterService(fileWriterService);
+        return helloService;
+    }
+    @Bean
+    public Endpoint helloEndpoint(HelloService helloService){
+        EndpointImpl endpoint = new EndpointImpl(bus,helloService);
         endpoint.publish("/ServiceHello");
         return endpoint;
-
     }
+
 
 }
