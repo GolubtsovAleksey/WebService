@@ -61,7 +61,7 @@ public class FileWriterServiceImpl implements FileWriterService {
     public void writeUniqueName(String name) {
 
         for (String nameFromFile: getAllNames()){
-            if (nameFromFile.contains(name) == false ) {
+            if (!nameFromFile.contains(name)) {
                 writeName(name);
                 System.out.println("write a unique name");
             }
