@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Service
 public class FileWriterServiceImpl implements FileWriterService {
@@ -32,14 +34,41 @@ public class FileWriterServiceImpl implements FileWriterService {
 
     /**
      * метод для получения всех имен из файла
+     *
      * @return
      */
     private List<String> getAllNames() {
-        return null;
+
+        List<String> listNames = new ArrayList<>();
+
+        File readWritingName = new File("writingName");
+        Scanner scanner = null;
+
+        try {
+            scanner = new Scanner(readWritingName);
+        } catch (FileNotFoundException e) {
+            System.out.println("invalid file name or file path");
+        }
+        while (scanner.hasNext()) {
+            listNames.add(scanner.nextLine());
+        }
+        scanner.close();
+        return listNames;
     }
 
     @Override
     public void writeUniqueName(String name) {
-
+        List<String> listGetAllNames = new ArrayList<>();
+        for (int i = 0; i < getAllNames().size() - 1; i++) {
+            listGetAllNames.add(getAllNames().get(i));
+        }
+        for (int i = 0; i < listGetAllNames.size() - 1; i++) {
+            if (name != listGetAllNames.get(i)) {
+                writeName(name);
+                System.out.println("write a unique name");
+            } else {
+                System.out.println("this name is already in the file");
+            }
+        }
     }
 }
