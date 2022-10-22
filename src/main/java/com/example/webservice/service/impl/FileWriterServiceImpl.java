@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,13 +60,23 @@ public class FileWriterServiceImpl implements FileWriterService {
     @Override
     public void writeUniqueName(String name) {
 
-        for (int i = 0; i < getAllNames().size() - 1; i++) {
-            if (name != getAllNames().get(i)) {
+        for (String nameFromFile: getAllNames()){
+            if (nameFromFile.equals(name) == false ) {
                 writeName(name);
                 System.out.println("write a unique name");
             } else {
                 System.out.println("this name is already in the file");
             }
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this == obj );
     }
 }

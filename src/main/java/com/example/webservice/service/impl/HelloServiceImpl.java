@@ -20,7 +20,7 @@ public class HelloServiceImpl implements HelloService {
         if (name == null || name.isEmpty()) {
             return "enter a valid name";
         }
-        fileWriterService.writeName(name);
+        fileWriterService.writeUniqueName(name);
         return "Hello " + name;
     }
 
