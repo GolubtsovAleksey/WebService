@@ -58,12 +58,9 @@ public class FileWriterServiceImpl implements FileWriterService {
 
     @Override
     public void writeUniqueName(String name) {
-        List<String> listGetAllNames = new ArrayList<>();
+
         for (int i = 0; i < getAllNames().size() - 1; i++) {
-            listGetAllNames.add(getAllNames().get(i));
-        }
-        for (int i = 0; i < listGetAllNames.size() - 1; i++) {
-            if (name != listGetAllNames.get(i)) {
+            if (name != getAllNames().get(i)) {
                 writeName(name);
                 System.out.println("write a unique name");
             } else {
