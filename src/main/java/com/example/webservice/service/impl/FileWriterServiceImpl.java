@@ -61,22 +61,11 @@ public class FileWriterServiceImpl implements FileWriterService {
     public void writeUniqueName(String name) {
 
         for (String nameFromFile: getAllNames()){
-            if (nameFromFile.equals(name) == false ) {
+            if (nameFromFile.contains(name) == false ) {
                 writeName(name);
                 System.out.println("write a unique name");
-            } else {
-                System.out.println("this name is already in the file");
             }
+            System.out.println("this name is already in the file");
         }
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return (this == obj );
     }
 }
