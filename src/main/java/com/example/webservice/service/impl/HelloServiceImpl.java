@@ -4,6 +4,7 @@ import com.example.webservice.service.FileWriterService;
 import com.example.webservice.service.HelloService;
 
 import javax.jws.WebService;
+import javax.validation.constraints.Pattern;
 
 @WebService(
         serviceName = "Hello",

@@ -1,25 +1,21 @@
 package com.example.webservice.service.impl;
 
 import com.example.webservice.service.FileWriterService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
+@Slf4j
 @Service
 public class FileWriterServiceImpl implements FileWriterService {
-
-    private static final Logger logger = LoggerFactory.getLogger(HelloServiceImpl.class);
 
     @Override
     public void writeName(String name) {
 
-        logger.info("write to a file of the given name ");
+        log.info("write to a file of the given name ");
         File myFile = new File("writingName");
         PrintWriter writer = null;
         try {
@@ -60,12 +56,23 @@ public class FileWriterServiceImpl implements FileWriterService {
     @Override
     public void writeUniqueName(String name) {
 
-        for (String nameFromFile: getAllNames()){
-            if (!nameFromFile.contains(name)) {
+//        boolean isUniqueName = true;
+//        for(String nameFromFile: getAllNames()){
+//            if (nameFromFile.equals(name)) {
+//              isUniqueName = false;
+//              break;
+//            }
+//        }
+//        if (isUniqueName) {
+//            writeName(name);
+//            System.out.println("write a unique name");
+//        } else {
+//            System.out.println("this name is already in the file");
+//        }
+            if (!getAllNames().contains(name)) {
                 writeName(name);
                 System.out.println("write a unique name");
             }
             System.out.println("this name is already in the file");
-        }
     }
 }
