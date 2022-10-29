@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 @Slf4j
 @Service
 public class FileWriterServiceImpl implements FileWriterService {
@@ -54,25 +55,15 @@ public class FileWriterServiceImpl implements FileWriterService {
     }
 
     @Override
-    public void writeUniqueName(String name) {
+    public boolean writeUniqueName(String name) {
 
-//        boolean isUniqueName = true;
-//        for(String nameFromFile: getAllNames()){
-//            if (nameFromFile.equals(name)) {
-//              isUniqueName = false;
-//              break;
-//            }
-//        }
-//        if (isUniqueName) {
-//            writeName(name);
-//            System.out.println("write a unique name");
-//        } else {
-//            System.out.println("this name is already in the file");
-//        }
-            if (!getAllNames().contains(name)) {
-                writeName(name);
-                System.out.println("write a unique name");
-            }
+        if (!getAllNames().contains(name)) {
+            writeName(name);
+            System.out.println("write a unique name");
+            return true;
+        } else {
             System.out.println("this name is already in the file");
+            return false;
+        }
     }
 }

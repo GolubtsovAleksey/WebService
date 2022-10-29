@@ -21,8 +21,11 @@ public class HelloServiceImpl implements HelloService {
         if (name == null || name.isEmpty()) {
             return "enter a valid name";
         }
-        fileWriterService.writeUniqueName(name);
-        return "Hello " + name;
+        if (fileWriterService.writeUniqueName(name)) {
+            return "Hello " + name + " - write a unique name";
+        } else {
+            return " this name is already in the file";
+        }
     }
 
     public void setFileWriterService(FileWriterService fileWriterService) {
