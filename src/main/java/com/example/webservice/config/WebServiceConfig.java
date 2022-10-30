@@ -19,17 +19,16 @@ public class WebServiceConfig {
     private Bus bus;
 
     @Bean
-    public HelloService helloService(FileWriterService fileWriterService){
+    public HelloService helloService(FileWriterService fileWriterService) {
         HelloServiceImpl helloService = new HelloServiceImpl();
         helloService.setFileWriterService(fileWriterService);
         return helloService;
     }
+
     @Bean
-    public Endpoint helloEndpoint(HelloService helloService){
-        EndpointImpl endpoint = new EndpointImpl(bus,helloService);
+    public Endpoint helloEndpoint(HelloService helloService) {
+        EndpointImpl endpoint = new EndpointImpl(bus, helloService);
         endpoint.publish("/ServiceHello");
         return endpoint;
     }
-
-
 }

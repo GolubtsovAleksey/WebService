@@ -18,7 +18,7 @@ public interface HelloService {
             targetNamespace = ""
     )
     @RequestWrapper(
-            localName = "sayHelloReques",
+            localName = "sayHelloRequest",
             targetNamespace = "http://service.ws.sample/",
             className = "com.example.WebService.HelloServiceRequest"
     )

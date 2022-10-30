@@ -30,11 +30,6 @@ public class FileWriterServiceImpl implements FileWriterService {
         }
     }
 
-    /**
-     * метод для получения всех имен из файла
-     *
-     * @return
-     */
     private List<String> getAllNames() {
 
         List<String> listNames = new ArrayList<>();
@@ -45,7 +40,7 @@ public class FileWriterServiceImpl implements FileWriterService {
         try {
             scanner = new Scanner(readWritingName);
         } catch (FileNotFoundException e) {
-            System.out.println("invalid file name or file path");
+            log.error("invalid file name or file path");
         }
         while (scanner.hasNext()) {
             listNames.add(scanner.nextLine());
@@ -59,11 +54,10 @@ public class FileWriterServiceImpl implements FileWriterService {
 
         if (!getAllNames().contains(name)) {
             writeName(name);
-            System.out.println("write a unique name");
+            log.debug("write a unique name");
             return true;
-        } else {
-            System.out.println("this name is already in the file");
-            return false;
         }
+        log.debug("this name is already in the file");
+        return false;
     }
 }
